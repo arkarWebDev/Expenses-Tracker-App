@@ -1,8 +1,21 @@
-import React from "react";
+// rrd imports
 import { useLoaderData } from "react-router-dom";
-import { getUserName } from "../helpers/fetchHelper";
+import { getUserName } from "../helpers/helpers";
 
-export const DashboardLoader = () => {
+// pages imports
+import Intro from "./Intro";
+
+export const dashboardAction = async ({ request }) => {
+  try {
+    const data = await request.formData();
+    const username = data.get("userName");
+    localStorage.setItem("userName", JSON.stringify(username));
+    return username;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+export const dashboardLoader = () => {
   const userName = getUserName("userName");
   return { userName };
 };
@@ -10,7 +23,7 @@ export const DashboardLoader = () => {
 const DashBoard = () => {
   const { userName } = useLoaderData();
 
-  return <div>Hi {userName}</div>;
+  return <>{userName ? <p>{userName}</p> : <Intro />}</>;
 };
 
 export default DashBoard;

@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.destroy--btn {
+  @apply border-2 border-red-500 px-3 py-2 rounded-md text-red-500 flex items-center hover:text-white hover:bg-red-500 hover:border-white duration-150;
+}
