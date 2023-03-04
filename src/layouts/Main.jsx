@@ -1,12 +1,12 @@
 // rrd imports
 import { Outlet, useLoaderData } from "react-router-dom";
-import { getUserName } from "../helpers/helpers";
+import { fectchLocal } from "../helpers/helpers";
 
 // components imports
 import Nav from "../components/Nav";
 
 export const mainLoader = () => {
-  const userName = getUserName("userName");
+  const userName = fectchLocal("userName");
   return { userName };
 };
 
@@ -16,7 +16,7 @@ const DashBoard = () => {
   return (
     <section className="h-screen relative">
       <Nav userName={userName} />
-      <main className="px-40">
+      <main className="px-8 md:px-40">
         <Outlet />
       </main>
     </section>

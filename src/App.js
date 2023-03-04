@@ -14,12 +14,14 @@ import { logoutAction } from "./actions/logout";
 // tostify imports
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Error from "./pages/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
     loader: mainLoader,
+    errorElement: <Error />,
     children: [
       {
         index: true,

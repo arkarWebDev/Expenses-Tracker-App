@@ -4,10 +4,12 @@ import { Form, Link } from "react-router-dom";
 
 const Nav = ({ userName }) => {
   return (
-    <nav className=" px-40 py-4 flex items-center justify-between w-full bg-white">
+    <nav className="px-8 md:px-40 py-4 flex items-center justify-between w-full bg-white">
       <Link to={"/"} className="flex items-center">
-        <BanknotesIcon width={52} className="inline-block text-cus-green" />
-        <span className="text-4xl font-bold ml-3">UR BUDGET</span>
+        <BanknotesIcon width={40} className="inline-block text-cus-green" />
+        <span className="text-2xl md:text-4xl font-bold ml-1 md:ml-3">
+          UR BUDGET
+        </span>
       </Link>
       <div>
         {userName && (
@@ -21,8 +23,10 @@ const Nav = ({ userName }) => {
             }}
           >
             <button type="submit" className="destroy--btn">
-              <span className=" font-semibold text-base">Destroy Session</span>
-              <TrashIcon width={20} className="inline-block ml-1" />
+              <span className=" font-semibold text-base hidden md:block">
+                Destroy Session
+              </span>
+              <TrashIcon width={20} className="inline-block md:ml-1" />
             </button>
           </Form>
         )}
