@@ -1,6 +1,12 @@
 // rrd imports
 import { useLoaderData } from "react-router-dom";
-import { createNewBudget, fectchLocal } from "../helpers/helpers";
+
+// helper imports
+import {
+  createNewBudget,
+  createNewExpense,
+  fectchLocal,
+} from "../helpers/helpers";
 
 // toastify imports
 import { toast } from "react-toastify";
@@ -30,21 +36,43 @@ export const dashboardAction = async ({ request }) => {
       });
       return toast.success("New budget created.");
     } catch (e) {
-      throw new Error("There was an error when creating new budget.");
+      throw new Error("There was a problem creating new budget.");
+    }
+  }
+
+  if (_action === "newExpense") {
+    try {
+      createNewExpense({
+        expense_name: values.newExpense,
+        expense_amount: values.newExpenseAmount,
+        budget_id: values.budgetCategory,
+      });
+      return toast.success(`${values.newExpense} expense created`);
+    } catch (e) {
+      throw new Error("There was a problem creating new expense.");
     }
   }
 };
+
 export const dashboardLoader = () => {
   const userName = fectchLocal("userName");
   const budgets = fectchLocal("budgets");
-  return { userName, budgets };
+  const expenses = fectchLocal("expenses");
+
+  return { userName, budgets, expenses };
 };
 
 const DashBoard = () => {
-  const { userName, budgets } = useLoaderData();
+  const { userName, budgets, expenses } = useLoaderData();
 
   return (
-    <>{userName ? <Home userName={userName} budgets={budgets} /> : <Intro />}</>
+    <>
+      {userName ? (
+        <Home userName={userName} budgets={budgets} expenses={expenses} />
+      ) : (
+        <Intro />
+      )}
+    </>
   );
 };
 

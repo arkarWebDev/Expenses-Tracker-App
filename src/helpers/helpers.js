@@ -30,3 +30,24 @@ export const createNewBudget = ({ budget_name, budget_amount }) => {
     JSON.stringify([...existingBudgets, newBudget])
   );
 };
+
+// newExpense create
+export const createNewExpense = ({
+  expense_name,
+  expense_amount,
+  budget_id,
+}) => {
+  const newExpense = {
+    id: crypto.randomUUID(),
+    budget_id,
+    name: expense_name,
+    amount: Number(expense_amount),
+    created_at: new Date(),
+  };
+
+  const existingExpenses = fectchLocal("expenses") ?? [];
+  localStorage.setItem(
+    "expenses",
+    JSON.stringify([...existingExpenses, newExpense])
+  );
+};

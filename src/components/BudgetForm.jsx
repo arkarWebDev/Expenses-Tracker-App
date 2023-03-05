@@ -2,10 +2,11 @@
 import { useEffect, useRef } from "react";
 
 // rrd imports
+// eslint-disable-next-line
 import { Form, useFetcher } from "react-router-dom";
 
 // icons import
-import { SquaresPlusIcon } from "@heroicons/react/24/solid";
+import { CurrencyDollarIcon } from "@heroicons/react/24/solid";
 
 const BudgetForm = () => {
   const fetcher = useFetcher();
@@ -23,7 +24,7 @@ const BudgetForm = () => {
 
   return (
     <>
-      <div className=" border-dashed border-2 rounded-xl border-black p-3 md:p-6 mt-10 w-full md:w-1/2">
+      <div className=" border-dashed border-2 rounded-xl border-black p-3 md:p-6 mt-10 w-full md:w-1/2 h-fit">
         <h2 className="text-xl font-bold md:text-2xl mb-3">Create budget</h2>
         <fetcher.Form method="post" ref={formRef}>
           <input type="text" hidden name="_action" value="newBudget" readOnly />
@@ -61,10 +62,10 @@ const BudgetForm = () => {
           </div>
           <button
             type="submit"
-            className="flex items-center bg-black text-white font-medium px-3 py-2 mt-3 w-full md:w-1/2 justify-center rounded-lg"
+            className="flex items-center bg-black text-white font-medium px-3 py-2 mt-3  justify-center rounded-lg text-lg"
           >
             <span>Create Budget</span>
-            <SquaresPlusIcon width={30} className="ml-1 md:ml-2" />
+            <CurrencyDollarIcon width={30} className="ml-1 md:ml-2" />
           </button>
         </fetcher.Form>
       </div>
