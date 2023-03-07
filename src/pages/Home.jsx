@@ -1,17 +1,23 @@
 // components imports
 import BudgetForm from "../components/BudgetForm";
 import ExpenseForm from "../components/ExpenseForm";
+import ExpensesContainer from "../layouts/ExpensesContainer";
 
 const Home = ({ userName, budgets, expenses }) => {
   return (
-    <section className="mt-8 md:mt-20 md:flex gap-8">
+    <section>
       {budgets && budgets.length > 0 ? (
-        <>
-          <BudgetForm />
-          <ExpenseForm expenses={expenses} budgets={budgets} />
-        </>
+        <section className="xl:flex gap-8">
+          <div className="xl:w-1/2">
+            <BudgetForm />
+            <ExpenseForm expenses={expenses} budgets={budgets} />
+          </div>
+          <div className="mt-10 w-full">
+            <ExpensesContainer budgets={budgets} />
+          </div>
+        </section>
       ) : (
-        <>
+        <div className="xl:w-2/3">
           <h1 className=" text-3xl md:text-6xl font-extrabold text-cus-green mb-3">
             Welcome, <span>{userName}</span>
           </h1>
@@ -21,7 +27,7 @@ const Home = ({ userName, budgets, expenses }) => {
             Create a budget to get started!
           </p>
           <BudgetForm />
-        </>
+        </div>
       )}
     </section>
   );

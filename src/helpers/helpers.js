@@ -1,5 +1,5 @@
 // get name
-export function fectchLocal(key) {
+export function fetchLocal(key) {
   return JSON.parse(localStorage.getItem(key));
 }
 
@@ -9,10 +9,10 @@ export const deleteUserName = ({ key }) => {
 };
 
 //color generate
-const colorGenerator = (key) => {
-  const budgetsLength = fectchLocal("budgets")?.length ?? 0;
-  return `${budgetsLength * 34} 65% 50%`;
-};
+// const colorGenerator = (key) => {
+//   const budgetsLength = fectchLocal("budgets")?.length ?? 0;
+//   return `${budgetsLength * 34} 65% 50%`;
+// };
 
 // newBudget create
 export const createNewBudget = ({ budget_name, budget_amount }) => {
@@ -21,10 +21,10 @@ export const createNewBudget = ({ budget_name, budget_amount }) => {
     name: budget_name,
     amount: Number(budget_amount),
     created_at: new Date(),
-    color: colorGenerator(),
+    // color: colorGenerator(),
   };
 
-  const existingBudgets = fectchLocal("budgets") ?? [];
+  const existingBudgets = fetchLocal("budgets") ?? [];
   localStorage.setItem(
     "budgets",
     JSON.stringify([...existingBudgets, newBudget])
@@ -45,9 +45,40 @@ export const createNewExpense = ({
     created_at: new Date(),
   };
 
-  const existingExpenses = fectchLocal("expenses") ?? [];
+  const existingExpenses = fetchLocal("expenses") ?? [];
   localStorage.setItem(
     "expenses",
     JSON.stringify([...existingExpenses, newExpense])
   );
+};
+
+// formatting
+
+// format budget currency
+export const formatCurrency = (amount) => {
+  return amount.toLocaleString(undefined, {
+    style: "currency",
+    currency: "USD",
+  });
+};
+
+// total spent by budget
+export const calcSpentByBudget = (budget_id) => {
+  const expenses = fetchLocal("expenses") ?? [];
+  const spentedBudget = expenses.reduce((acc, expense) => {
+    // check id is same ?
+    if (expense.budget_id !== budget_id) return acc;
+
+    // add to total
+    return (acc += expense.amount);
+  }, 0);
+  return spentedBudget;
+};
+
+// format percent
+export const formatPercent = (amount) => {
+  amount.toLocaleString(undefined, {
+    style: "percent",
+    minimumFractionDigits: 0,
+  });
 };

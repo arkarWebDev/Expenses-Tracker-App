@@ -5,7 +5,7 @@ import { useLoaderData } from "react-router-dom";
 import {
   createNewBudget,
   createNewExpense,
-  fectchLocal,
+  fetchLocal,
 } from "../helpers/helpers";
 
 // toastify imports
@@ -55,9 +55,9 @@ export const dashboardAction = async ({ request }) => {
 };
 
 export const dashboardLoader = () => {
-  const userName = fectchLocal("userName");
-  const budgets = fectchLocal("budgets");
-  const expenses = fectchLocal("expenses");
+  const userName = fetchLocal("userName");
+  const budgets = fetchLocal("budgets");
+  const expenses = fetchLocal("expenses");
 
   return { userName, budgets, expenses };
 };

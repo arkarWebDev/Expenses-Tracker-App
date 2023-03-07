@@ -24,7 +24,7 @@ const ExpenseForm = ({ budgets, expenses }) => {
 
   return (
     <>
-      <div className=" border-dashed border-2 rounded-xl border-black p-3 md:p-6 mt-10 w-full md:w-1/2 ">
+      <div className=" border-dashed border-2 rounded-xl border-black p-3 md:p-6 mt-10 w-full">
         <h2 className="text-xl font-bold md:text-2xl mb-3">
           Add New {budgets.length === 1 && <span>{budgets[0].name}</span>}{" "}
           Expense

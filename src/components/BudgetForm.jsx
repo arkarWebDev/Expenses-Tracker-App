@@ -24,7 +24,7 @@ const BudgetForm = () => {
 
   return (
     <>
-      <div className=" border-dashed border-2 rounded-xl border-black p-3 md:p-6 mt-10 w-full md:w-1/2 h-fit">
+      <div className=" border-dashed border-2 rounded-xl border-black p-3 md:p-6 mt-10 w-full h-fit">
         <h2 className="text-xl font-bold md:text-2xl mb-3">Create budget</h2>
         <fetcher.Form method="post" ref={formRef}>
           <input type="text" hidden name="_action" value="newBudget" readOnly />

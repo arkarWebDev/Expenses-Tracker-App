@@ -1,12 +1,12 @@
 // rrd imports
 import { Outlet, useLoaderData } from "react-router-dom";
-import { fectchLocal } from "../helpers/helpers";
+import { fetchLocal } from "../helpers/helpers";
 
 // components imports
 import Nav from "../components/Nav";
 
 export const mainLoader = () => {
-  const userName = fectchLocal("userName");
+  const userName = fetchLocal("userName");
   return { userName };
 };
 
