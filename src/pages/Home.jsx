@@ -6,7 +6,7 @@ import TableContainer from "../layouts/TableContainer";
 
 const Home = ({ userName, budgets, expenses }) => {
   return (
-    <section>
+    <section className=" pb-10">
       {budgets && budgets.length > 0 ? (
         <section className="xl:flex gap-8">
           <div className="xl:w-1/2">
