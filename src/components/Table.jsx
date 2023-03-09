@@ -1,7 +1,7 @@
-import React from "react";
+// components exports
 import TableRow from "./TableRow";
 
-const Table = ({ expenses }) => {
+const Table = ({ expenses, limit }) => {
   return (
     <>
       <table className="w-full text-left">
@@ -25,9 +25,11 @@ const Table = ({ expenses }) => {
         <tbody>
           {expenses &&
             expenses.length &&
-            expenses.map((expense) => (
-              <TableRow expense={expense} key={expense.id} />
-            ))}
+            expenses
+              .slice(0, limit)
+              .map((expense) => (
+                <TableRow expense={expense} key={expense.id} />
+              ))}
         </tbody>
       </table>
     </>
