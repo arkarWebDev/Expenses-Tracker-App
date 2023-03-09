@@ -82,3 +82,14 @@ export const formatPercent = (amount) => {
     minimumFractionDigits: 0,
   });
 };
+
+// format Date
+export const formatDate = (date) => {
+  return new Date(date).toLocaleDateString();
+};
+
+// budget of expense
+export const budgetOfExpense = ({ key, value, type }) => {
+  const data = fetchLocal(type) ?? [];
+  return data.filter((item) => item[key] === value);
+};

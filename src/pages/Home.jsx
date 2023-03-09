@@ -2,6 +2,7 @@
 import BudgetForm from "../components/BudgetForm";
 import ExpenseForm from "../components/ExpenseForm";
 import ExpensesContainer from "../layouts/ExpensesContainer";
+import TableContainer from "../layouts/TableContainer";
 
 const Home = ({ userName, budgets, expenses }) => {
   return (
@@ -14,6 +15,9 @@ const Home = ({ userName, budgets, expenses }) => {
           </div>
           <div className="mt-10 w-full">
             <ExpensesContainer budgets={budgets} />
+            {expenses && expenses.length && (
+              <TableContainer expenses={expenses} />
+            )}
           </div>
         </section>
       ) : (

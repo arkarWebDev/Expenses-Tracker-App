@@ -12,6 +12,7 @@ const ExpensesContainer = ({ budgets }) => {
   };
   return (
     <>
+      <h2 className="text-3xl font-bold mb-3">Existing Budgets</h2>
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-3">
         {budgets.slice(0, limit).map((budget) => (
           <ExpenseCard budget={budget} key={budget.id} />

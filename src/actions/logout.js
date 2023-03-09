@@ -13,6 +13,14 @@ export const logoutAction = async () => {
     key: "userName",
   });
 
+  deleteUserName({
+    key: "budgets",
+  });
+
+  deleteUserName({
+    key: "expenses",
+  });
+
   // alert
   toast.success("Session is destroyed.");
 
