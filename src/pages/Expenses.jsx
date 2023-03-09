@@ -5,14 +5,36 @@ import { Link, useLoaderData } from "react-router-dom";
 import { HomeIcon } from "@heroicons/react/24/solid";
 
 // helper imports
-import { fetchLocal } from "../helpers/helpers";
+import { deleteExpense, fetchLocal } from "../helpers/helpers";
 
 // compnents imports
 import Table from "../components/Table";
 
+// toast import
+import { toast } from "react-toastify";
+
+// loader
 export const expensesLoader = () => {
   const expenses = fetchLocal("expenses");
   return { expenses };
+};
+
+// action
+export const expenseAction = async ({ request }) => {
+  const data = await request.formData();
+  const { _action, ...values } = Object.fromEntries(data);
+
+  if (_action === "deleteExpense") {
+    try {
+      deleteExpense({
+        key: "expenses",
+        expenseID: values.expenseID,
+      });
+      return toast.success(`Expense deleted`);
+    } catch (e) {
+      throw new Error("There was a problem deleting new expense.");
+    }
+  }
 };
 
 const Expenses = () => {

@@ -52,6 +52,13 @@ export const createNewExpense = ({
   );
 };
 
+// delete expense
+export const deleteExpense = ({ key, expenseID }) => {
+  const existingItems = fetchLocal(key);
+  const newItems = existingItems.filter((item) => item.id !== expenseID);
+  return localStorage.setItem(key, JSON.stringify(newItems));
+};
+
 // formatting
 
 // format budget currency

@@ -4,9 +4,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // layouts imports
 import Main, { mainLoader } from "./layouts/Main";
 
-// pages imports
+// pages loader/action imports
 import DashBoard, { dashboardAction, dashboardLoader } from "./pages/DashBoard";
+import Expenses, { expenseAction, expensesLoader } from "./pages/Expenses";
+
+// pages action imports
 import Logout from "./pages/Logout";
+import Error from "./pages/Error";
 
 // actions imports
 import { logoutAction } from "./actions/logout";
@@ -14,8 +18,6 @@ import { logoutAction } from "./actions/logout";
 // tostify imports
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Error from "./pages/Error";
-import Expenses, { expensesLoader } from "./pages/Expenses";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,7 @@ const router = createBrowserRouter([
       {
         path: "expenses",
         loader: expensesLoader,
+        action: expenseAction,
         element: <Expenses />,
       },
     ],

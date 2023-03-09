@@ -5,6 +5,7 @@ import { useLoaderData } from "react-router-dom";
 import {
   createNewBudget,
   createNewExpense,
+  deleteExpense,
   fetchLocal,
 } from "../helpers/helpers";
 
@@ -50,6 +51,18 @@ export const dashboardAction = async ({ request }) => {
       return toast.success(`${values.newExpense} expense created`);
     } catch (e) {
       throw new Error("There was a problem creating new expense.");
+    }
+  }
+
+  if (_action === "deleteExpense") {
+    try {
+      deleteExpense({
+        key: "expenses",
+        expenseID: values.expenseID,
+      });
+      return toast.success(`Expense deleted`);
+    } catch (e) {
+      throw new Error("There was a problem deleting new expense.");
     }
   }
 };

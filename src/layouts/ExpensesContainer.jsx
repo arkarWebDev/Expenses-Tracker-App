@@ -1,15 +1,28 @@
+import useTrackWidth from "../hooks/useTrackWidth";
+
 // components exports
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ExpenseCard from "../components/ExpenseCard";
 
 const ExpensesContainer = ({ budgets }) => {
-  const [limit, setLimit] = useState(6);
+  const [limit, setLimit] = useState();
   const [showAll, setShowAll] = useState(false);
+
+  const { width } = useTrackWidth();
+
+  useEffect(() => {
+    if (width < 416) {
+      setLimit(3);
+    } else {
+      setLimit(6);
+    }
+  }, [width]);
 
   const changeLimit = () => {
     showAll ? setLimit(6) : setLimit(budgets.length);
     setShowAll(!showAll);
   };
+
   return (
     <>
       <h2 className="text-3xl font-bold mb-3">Existing Budgets</h2>
