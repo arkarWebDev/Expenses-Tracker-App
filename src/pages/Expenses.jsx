@@ -59,7 +59,9 @@ const Expenses = () => {
           <span className="text-xl hidden xl:block xl:ml-1">Go Back</span>
         </Link>
       </div>
-      <Table expenses={expenses} limit={expenses.length} />
+      <div className="relative overflow-x-auto">
+        <Table expenses={expenses} limit={expenses.length} />
+      </div>
     </>
   );
 };

@@ -8,7 +8,7 @@ import { Form, useFetcher } from "react-router-dom";
 // icons import
 import { SquaresPlusIcon } from "@heroicons/react/24/solid";
 
-const ExpenseForm = ({ budgets, expenses }) => {
+const ExpenseForm = ({ budgets }) => {
   const fetcher = useFetcher();
   const isSubmitting = fetcher.state === "submitting";
 
@@ -26,7 +26,10 @@ const ExpenseForm = ({ budgets, expenses }) => {
     <>
       <div className=" border-dashed border-2 rounded-xl border-black p-3 md:p-6 mt-10 w-full">
         <h2 className="text-xl font-bold md:text-2xl mb-3">
-          Add New {budgets.length === 1 && <span>{budgets[0].name}</span>}{" "}
+          Add{" "}
+          {budgets.length === 1 && (
+            <span className="text-cus-green">{budgets[0].name}</span>
+          )}{" "}
           Expense
         </h2>
         <fetcher.Form method="post" ref={formRef}>

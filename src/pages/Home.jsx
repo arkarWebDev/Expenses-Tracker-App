@@ -11,7 +11,7 @@ const Home = ({ userName, budgets, expenses }) => {
         <section className="xl:flex gap-8">
           <div className="xl:w-1/2">
             <BudgetForm />
-            <ExpenseForm expenses={expenses} budgets={budgets} />
+            <ExpenseForm budgets={budgets} />
           </div>
           <div className="mt-10 w-full">
             <ExpensesContainer budgets={budgets} />

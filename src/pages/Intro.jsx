@@ -9,7 +9,7 @@ import { UserPlusIcon } from "@heroicons/react/24/solid";
 
 const Intro = () => {
   return (
-    <section className="flex flex-col-reverse md:flex-row gap-3 md:items-center justify-center h-screen">
+    <section className="flex flex-col md:flex-row gap-3 md:items-center justify-center h-screen">
       <div>
         <h1 className="text-3xl md:text-7xl font-extrabold">
           Take Control

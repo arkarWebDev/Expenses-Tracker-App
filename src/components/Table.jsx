@@ -1,7 +1,7 @@
 // components exports
 import TableRow from "./TableRow";
 
-const Table = ({ expenses, limit }) => {
+const Table = ({ expenses, limit, showBudget = true }) => {
   return (
     <>
       <table className="w-full text-left">
@@ -16,19 +16,25 @@ const Table = ({ expenses, limit }) => {
             <th scope="col" className="px-6 py-3">
               Date
             </th>
-            <th scope="col" className="px-6 py-3">
-              Budget
-            </th>
+            {showBudget && (
+              <th scope="col" className="px-6 py-3">
+                Budget
+              </th>
+            )}
             <th scope="col" className="px-6 py-3"></th>
           </tr>
         </thead>
         <tbody>
           {expenses &&
-            expenses.length &&
+            expenses.length > 0 &&
             expenses
               .slice(0, limit)
               .map((expense) => (
-                <TableRow expense={expense} key={expense.id} />
+                <TableRow
+                  expense={expense}
+                  key={expense.id}
+                  showBudget={showBudget}
+                />
               ))}
         </tbody>
       </table>

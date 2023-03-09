@@ -19,7 +19,8 @@ const ExpensesContainer = ({ budgets }) => {
   }, [width]);
 
   const changeLimit = () => {
-    showAll ? setLimit(6) : setLimit(budgets.length);
+    if (width < 416) showAll ? setLimit(3) : setLimit(budgets.length);
+    if (width > 416) showAll ? setLimit(6) : setLimit(budgets.length);
     setShowAll(!showAll);
   };
 
