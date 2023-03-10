@@ -1,5 +1,11 @@
 // hero icons imports
-import { BanknotesIcon, TrashIcon } from "@heroicons/react/24/solid";
+import {
+  BanknotesIcon,
+  CodeBracketIcon,
+  TrashIcon,
+} from "@heroicons/react/24/solid";
+
+// rrd imports
 import { Form, Link } from "react-router-dom";
 
 const Nav = ({ userName }) => {
@@ -12,7 +18,7 @@ const Nav = ({ userName }) => {
         </span>
       </Link>
       <div>
-        {userName && (
+        {userName ? (
           <Form
             method="post"
             action="/logout"
@@ -29,6 +35,10 @@ const Nav = ({ userName }) => {
               <TrashIcon width={20} className="inline-block md:ml-1" />
             </button>
           </Form>
+        ) : (
+          <Link to={"https://github.com/arkarWebDev/Expenses-Tracker-App"}>
+            <CodeBracketIcon width={30} className="text-cus-green" />
+          </Link>
         )}
       </div>
     </nav>
