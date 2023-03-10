@@ -33,18 +33,36 @@ const ExpensesContainer = ({ budgets }) => {
         ))}
       </div>
       <div>
-        {budgets.length > 6 ||
-          (budgets.length > 3 && (
-            <div className="text-right">
-              <button
-                onClick={changeLimit}
-                className="text-sm font-semibold text-cus-green border-2 border-cus-green px-3 py-2 w-full md:w-fit mt-3 hover:text-white hover:bg-cus-green duration-150"
-                type="button"
-              >
-                {showAll ? <>Show few budgets</> : <>Show all budgets</>}
-              </button>
-            </div>
-          ))}
+        {width > 416 && (
+          <>
+            {budgets.length > 6 && (
+              <div className="text-right">
+                <button
+                  onClick={changeLimit}
+                  className="text-sm font-semibold text-cus-green border-2 border-cus-green px-3 py-2 w-full md:w-fit mt-3 hover:text-white hover:bg-cus-green duration-150"
+                  type="button"
+                >
+                  {showAll ? <>Show few budgets</> : <>Show all budgets</>}
+                </button>
+              </div>
+            )}
+          </>
+        )}
+        {width < 416 && (
+          <>
+            {budgets.length > 3 && (
+              <div className="text-right">
+                <button
+                  onClick={changeLimit}
+                  className="text-sm font-semibold text-cus-green border-2 border-cus-green px-3 py-2 w-full md:w-fit mt-3 hover:text-white hover:bg-cus-green duration-150"
+                  type="button"
+                >
+                  {showAll ? <>Show few budgets</> : <>Show all budgets</>}
+                </button>
+              </div>
+            )}
+          </>
+        )}
       </div>
     </>
   );
